@@ -71,7 +71,7 @@ def main(input_stream: TextIOBase, output_stream: TextIOBase) -> int:
                 return ERR_NO_LANDING_INSTRUCTIONS
 
         # If we are here we got some sort of invalid instruction
-        logger.warning(f'Unrecognized instruction in line {line_no}')
+        logger.error(f'Unrecognized instruction in line {line_no}')
         return ERR_INVALID_INSTRUCTION
 
     return SUCCESS
