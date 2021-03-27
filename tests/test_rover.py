@@ -67,3 +67,24 @@ def test_rover_turn_left(old_direction, new_direction):
 )
 def test_valid_move(old_point, direction, new_point):
     rover = Rover(Point(5, 5), old_point, direction, 'Perseverance')
+    rover.move()
+    assert rover.current_point == new_point
+
+
+@pytest.mark.parametrize(
+    'point, direction',
+    [
+        (Point(3, 5), 'N'),
+        (Point(5, 3), 'E'),
+        (Point(3, 0), 'S'),
+        (Point(0, 3), 'W'),
+    ]
+)
+def test_invalid_move(point, direction, caplog):
+    rover = Rover(Point(5, 5), point, direction, 'Perseverance')
+    rover.move()
+    # rover doesn't move:
+    assert rover.current_point == point
+    # rover logs error:
+    assert caplog.records[0].levelname == 'ERROR'
+    assert 'Cannot move' in caplog.records[0].message

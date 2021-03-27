@@ -1,3 +1,5 @@
+import logging
+
 from .datastructures import Point
 
 
@@ -15,6 +17,7 @@ class Rover():
         self.current_point = landing_point
         self.current_direction = direction
         self.name = name
+        self.logger = logging.getLogger(name)
 
     def can_move(self) -> bool:
         ''' Returns True if Rover can move in the current direction and False otherwise. '''
@@ -49,4 +52,4 @@ class Rover():
             elif self.current_direction == 'W':
                 self.current_point.x -= 1
         else:
-            pass # TODO
+            self.logger.error(f'Cannot move from {self.current_point} in the direction of {self.current_direction}')
