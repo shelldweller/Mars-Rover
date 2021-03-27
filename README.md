@@ -1,5 +1,25 @@
 ## Mars Rover
 
+### Running Mars Rover
+
+```bash
+python -m mars_rover < input.txt
+```
+
+### Running Tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
+### Project Assumptions
+
+1. Mars Rover must be resilient. Therefore logging is favoured over raising exceptions.
+2. Collision detection between multiple rovers is not implemented. Each rover is assumed to operate in an individual plateau.
+
+### Original requirements
+
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
 
 This plateau, which is curiously rectangular, must be navigated by the rovers so that their on board cameras can get a complete view of the surrounding terrain to send back to Earth.
